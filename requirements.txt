@@ -2,4 +2,3 @@ langchain
 langgraph
 wikipedia-api
 Flask
-smtplib2
