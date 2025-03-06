@@ -1,6 +1,10 @@
 import smtplib
 import random
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (for local development)
+load_dotenv()
 
 OTP_STORE = {}
 
