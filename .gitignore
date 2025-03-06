@@ -1,1 +1,12 @@
-my_gmail.env
+# Ignore environment files
+*.env
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.log
+*.sqlite3
+*.db
+env/
+venv/
+.venv/
