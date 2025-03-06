@@ -1,4 +1,4 @@
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, END, START
 from wikipedia_handler import search_monument_info
 from email_verification import generate_otp, verify_otp
 
@@ -30,16 +30,22 @@ def ask_otp(state, user_input):
 
 graph = StateGraph(ChatState)
 
+# Define nodes
 graph.add_node("initial", initial_node)
 graph.add_node("ask_email", ask_email)
 graph.add_node("ask_otp", ask_otp)
 graph.add_node("respond", lambda state, response: (END, response))
 graph.add_node("verified", lambda state, response: (END, response))
 
+# Define edges
 graph.add_edge("initial", "respond")
 graph.add_edge("initial", "ask_email")
 graph.add_edge("ask_email", "ask_otp")
 graph.add_edge("ask_otp", "ask_otp")
 graph.add_edge("ask_otp", "verified")
 
+# IMPORTANT: Add this to set the entrypoint for the graph
+graph.add_edge(START, "initial")
+
+# Compile chatbot
 chatbot = graph.compile()
