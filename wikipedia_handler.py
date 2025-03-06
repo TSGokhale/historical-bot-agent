@@ -1,4 +1,4 @@
-import wikipedia
+import wikipediaapi
 from filters import is_monument_related
 
 def search_monument_info(query):
